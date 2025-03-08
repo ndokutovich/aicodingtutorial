@@ -52,13 +52,13 @@ Cursor IDE — это современная интегрированная ср
 
 В зависимости от стека технологий вашего проекта, рекомендуется установить следующие плагины:
 
-- **Git** - для контроля версий
-- **Flutter & Dart** - для разработки на Flutter
-- **Java, Gradle** - для Java-разработки
-- **TypeScript** - для TypeScript-проектов
-- **ESLint/Prettier** - для форматирования кода
-- **Node.js** - для JavaScript/TypeScript разработки
-- **Python** - для Python-разработки
+- **[Git](https://git-scm.com/docs)** - для контроля версий
+- **[Flutter & Dart](https://docs.flutter.dev/)** - для разработки на Flutter
+- **[Java](https://docs.oracle.com/en/java/), [Gradle](https://docs.gradle.org/current/userguide/userguide.html)** - для Java-разработки
+- **[TypeScript](https://www.typescriptlang.org/docs/)** - для TypeScript-проектов
+- **[ESLint](https://eslint.org/docs/latest/)/[Prettier](https://prettier.io/docs/en/)** - для форматирования кода
+- **[Node.js](https://nodejs.org/en/docs/)** - для JavaScript/TypeScript разработки
+- **[Python](https://docs.python.org/3/)** - для Python-разработки
 
 Установка плагинов выполняется через стандартный менеджер расширений, как в VSCode.
 
@@ -117,6 +117,8 @@ Cursor предлагает несколько режимов работы:
 git init
 ```
 
+Подробнее о Git можно узнать в [официальной документации Git](https://git-scm.com/book/ru/v2).
+
 ### 5.2. Специальные файлы Cursor
 
 Для эффективной работы с Cursor рекомендуется создать следующие файлы:
@@ -125,7 +127,7 @@ git init
 - **.cursorignore** - файл для исключения определенных директорий из анализа AI
 - **.notes/project-overview.md** - файл с обзором проекта для контекста AI
 
-Эти файлы помогут настроить взаимодействие с AI-ассистентом под специфику вашего проекта.
+Эти файлы помогут настроить взаимодействие с AI-ассистентом под специфику вашего проекта. Подробнее о настройке Cursor можно узнать в [документации Cursor](https://cursor.sh/docs).
 
 ### 5.3. Создание проекта
 
@@ -134,16 +136,26 @@ git init
 ```bash
 # Для React-проекта
 npx create-react-app project-name
+```
+Подробнее о Create React App в [официальной документации React](https://create-react-app.dev/docs/getting-started/).
 
+```bash
 # Для Flutter-проекта
 flutter create project-name --platforms=ios,linux,windows,macos,android
+```
+Подробнее о создании проектов Flutter в [документации Flutter](https://docs.flutter.dev/get-started/test-drive).
 
+```bash
 # Для JHipster-проекта
 jhipster
+```
+Подробнее о JHipster в [официальной документации JHipster](https://www.jhipster.tech/documentation-archive/).
 
+```bash
 # Для Node.js-проекта
 npm init
 ```
+Подробнее о создании Node.js проектов в [документации NPM](https://docs.npmjs.com/cli/v8/commands/npm-init).
 
 Важно: **Всегда предпочитайте создание каркаса проекта специализированными утилитами** или используйте готовые boilerplate-решения, вместо того чтобы генерировать структуру с нуля через ИИ.
 
@@ -151,38 +163,20 @@ npm init
 
 В зависимости от типа проекта используйте следующие стандартные инструменты:
 
-- **Git** - система контроля версий для отслеживания изменений и совместной работы
-- **Flutter** - фреймворк для создания кроссплатформенных мобильных приложений
-- **JHipster** - платформа для быстрой генерации веб-приложений
-- **Node.js** - среда выполнения JavaScript для серверной разработки
-- **Java/Python** - языки программирования для серверной разработки
+- **[Git](https://git-scm.com/)** - система контроля версий для отслеживания изменений и совместной работы
+- **[Flutter](https://flutter.dev/)** - фреймворк для создания кроссплатформенных мобильных приложений
+- **[JHipster](https://www.jhipster.tech/)** - платформа для быстрой генерации веб-приложений
+- **[Node.js](https://nodejs.org/)** - среда выполнения JavaScript для серверной разработки
+- **[Java](https://www.java.com/)/[Python](https://www.python.org/)** - языки программирования для серверной разработки
 
 ### 5.5. Форматы данных
 
 Рекомендуемые форматы данных для различных целей:
 
-- **JSON** - для структурированных данных, конфигураций API и обмена данными
-- **Markdown (MD)** - для форматированного текста, документации и инструкций
-- **YAML (YML)** - для конфигурационных файлов, более читабельная альтернатива JSON
-- **Mermaid в MD** - для создания диаграмм прямо в markdown-документах
-
-Пример диаграммы Mermaid в Markdown:
-```mermaid
-graph TD
-    A[Начало] --> B{Проверка условия}
-    B --> |Да| C[Действие 1]
-    B --> |Нет| D[Действие 2]
-    C --> E[Конец]
-    D --> E
-```
-```mermaid
-graph TD
-    A[Начало] --> B{Проверка условия}
-    B --> |Да| C[Действие 1]
-    B --> |Нет| D[Действие 2]
-    C --> E[Конец]
-    D --> E
-```
+- **[JSON](https://www.json.org/json-en.html)** - для структурированных данных, конфигураций API и обмена данными
+- **[Markdown (MD)](https://daringfireball.net/projects/markdown/)** - для форматированного текста, документации и инструкций
+- **[YAML (YML)](https://yaml.org/)** - для конфигурационных файлов, более читабельная альтернатива JSON
+- **[Mermaid в MD](https://mermaid-js.github.io/mermaid/#/)** - для создания диаграмм прямо в markdown-документах
 
 ## 6. Работа с промтами
 
@@ -308,12 +302,12 @@ Flutter – это фреймворк для разработки кросспл
 
 #### Основные особенности
 
-- **Язык Dart** – подтип TypeScript, используется преимущественно в проектах Flutter. Имеет особенности именования: использует подчёркивания для переменных, константы в camelCase.
+- **[Язык Dart](https://dart.dev/guides)** – подтип TypeScript, используется преимущественно в проектах Flutter. Имеет особенности именования: использует подчёркивания для переменных, константы в camelCase.
 - **Собственный UI-движок** – в отличие от React, Angular или Vue, Flutter не работает с DOM, HTML или CSS. Это полностью независимая реализация UI-фреймворка, напоминающая React по концепции.
 - **Кроссплатформенность** – совместим со всеми основными платформами: Web, Windows, macOS, iOS, Android, Linux. Все версии используют нативную компиляцию без Electron или Chromium.
-- **Нативная компиляция** – для сборки под разные платформы требуются соответствующие инструменты (Visual Studio, XCode, Android Studio). Только веб-версия собирается легко на любой системе.
-- **Контейнеризация** – в планах создание Docker-образа для сборки в OpenShift. В настоящее время поддерживаются web, linux, android, но существуют решения и для Windows/iOS/macOS.
-- **Встроенные темы** – из коробки предоставляются две темы оформления: Material UI и Cupertino. Важно отметить, что между темами нельзя переключаться – каждая тема требует отдельной реализации.
+- **Нативная компиляция** – для сборки под разные платформы требуются соответствующие инструменты ([Visual Studio](https://visualstudio.microsoft.com/), [XCode](https://developer.apple.com/xcode/), [Android Studio](https://developer.android.com/studio)). Только веб-версия собирается легко на любой системе.
+- **Контейнеризация** – в планах создание Docker-образа для сборки в [OpenShift](https://www.redhat.com/en/technologies/cloud-computing/openshift). В настоящее время поддерживаются web, linux, android, но существуют решения и для Windows/iOS/macOS.
+- **Встроенные темы** – из коробки предоставляются две темы оформления: [Material UI](https://docs.flutter.dev/development/ui/widgets/material) и [Cupertino](https://docs.flutter.dev/development/ui/widgets/cupertino). Важно отметить, что между темами нельзя переключаться – каждая тема требует отдельной реализации.
 - **Расширяемость** – обширная экосистема библиотек и плагинов для доступа к API платформ (WinAPI32 и т.д.).
 - **Статус** – санкционный продукт.
 
@@ -321,7 +315,7 @@ Flutter – это фреймворк для разработки кросспл
 
 При работе с Flutter в Cursor рекомендуется:
 
-1. **Использовать BLoC для моделей данных**
+1. **Использовать [BLoC](https://bloclibrary.dev/) для моделей данных**
    ```
    Создай модель с использованием BLoC, включая State, Event, DelayedResult<T> с полями isLoading и Error, а также метод copyWith для иммутабельности.
    ```
@@ -331,7 +325,7 @@ Flutter – это фреймворк для разработки кросспл
    Реализуй стратегию для определения платформенной реализации на старте приложения, с пустой реализацией по умолчанию и логированием действий.
    ```
 
-3. **Внедрять зависимости через get_it**
+3. **Внедрять зависимости через [get_it](https://pub.dev/packages/get_it)**
    ```
    Настрой систему зависимостей с использованием пакета get_it для управления инстансами сервисов.
    ```
@@ -347,13 +341,15 @@ Flutter – это фреймворк для разработки кросспл
    ```
 
 #### Ресурсы для изучения
-- Официальная документация Flutter – отличный источник информации для понимания особенностей и возможностей фреймворка.
+- [Официальная документация Flutter](https://docs.flutter.dev/) – отличный источник информации для понимания особенностей и возможностей фреймворка.
+- [Flutter API Reference](https://api.flutter.dev/) – подробная документация по API Flutter.
+- [Flutter Community](https://flutter.dev/community) – сообщество разработчиков Flutter.
 
 ### 8.2. Backend
 
 #### 8.2.1. Java и JHipster
 
-JHipster – это платформа для быстрой генерации полноценных веб-приложений на основе Spring Boot и различных фронтенд-фреймворков.
+[JHipster](https://www.jhipster.tech/) – это платформа для быстрой генерации полноценных веб-приложений на основе Spring Boot и различных фронтенд-фреймворков.
 
 **Особенности JHipster:**
 
@@ -364,18 +360,18 @@ JHipster – это платформа для быстрой генерации 
   - Gateway
   - Registry
 - **Встроенная авторизация** – на выбор предлагается:
-  - Интеграция с Keycloak
+  - Интеграция с [Keycloak](https://www.keycloak.org/documentation)
   - Встроенная система авторизации
 - **Варианты развертывания**:
-  - Docker
-  - OpenShift
-  - Kubernetes
-- **Стандартный стек Spring Boot**:
+  - [Docker](https://docs.docker.com/)
+  - [OpenShift](https://docs.openshift.com/)
+  - [Kubernetes](https://kubernetes.io/docs/home/)
+- **Стандартный стек [Spring Boot](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/)**:
   - REST CRUD API
-  - Swagger для документации
-  - JPA/Hibernate для работы с БД
+  - [Swagger](https://swagger.io/docs/) для документации
+  - [JPA/Hibernate](https://hibernate.org/orm/documentation/) для работы с БД
 - **Готовый фронтенд**:
-  - Выбор между React, Angular, Vue
+  - Выбор между [React](https://reactjs.org/docs/getting-started.html), [Angular](https://angular.io/docs), [Vue](https://vuejs.org/guide/introduction.html)
   - Админ-панель с метриками, логами
   - CRUD-интерфейс для всех сущностей
 
@@ -384,9 +380,13 @@ JHipster – это платформа для быстрой генерации 
 Создай JHipster-проект с следующей моделью данных: [описание модели]. Используй монолитную архитектуру, Spring Security для авторизации, PostgreSQL в качестве БД и React для фронтенда.
 ```
 
+**Ресурсы для изучения:**
+- [JHipster Documentation](https://www.jhipster.tech/documentation-archive/) – официальная документация JHipster.
+- [JHipster Mini-Book](https://www.infoq.com/minibooks/jhipster-mini-book/) – книга о JHipster.
+
 #### 8.2.2. NodeJS
 
-**Strapi** – это headless CMS для Node.js, которая позволяет быстро создавать настраиваемые API.
+**[Strapi](https://strapi.io/)** – это headless CMS для Node.js, которая позволяет быстро создавать настраиваемые API.
 
 **Особенности Strapi:**
 
@@ -401,9 +401,13 @@ JHipster – это платформа для быстрой генерации 
 Создай Strapi-проект с следующими типами контента: [описание типов]. Настрой API и добавь базовую авторизацию с ролями Admin и User.
 ```
 
+**Ресурсы для изучения:**
+- [Strapi Documentation](https://docs.strapi.io/) – официальная документация Strapi.
+- [Strapi Tutorials](https://strapi.io/blog/categories/tutorials) – учебные материалы по Strapi.
+
 ### 8.3. Интеграция - N8N
 
-N8N – это инструмент для автоматизации рабочих процессов, который позволяет интегрировать различные сервисы и системы.
+[N8N](https://n8n.io/) – это инструмент для автоматизации рабочих процессов, который позволяет интегрировать различные сервисы и системы.
 
 **Основные возможности N8N:**
 
@@ -425,6 +429,10 @@ N8N – это инструмент для автоматизации рабоч
 - Мониторинг систем и оповещение
 - Обработка и трансформация данных между различными API
 
+**Ресурсы для изучения:**
+- [N8N Documentation](https://docs.n8n.io/) – официальная документация N8N.
+- [N8N Academy](https://academy.n8n.io/) – учебные материалы по N8N.
+
 ## 9. Лучшие практики использования Cursor
 
 - Регулярно обновляйте IDE до последней версии
@@ -433,7 +441,7 @@ N8N – это инструмент для автоматизации рабоч
 - Формулируйте четкие и конкретные запросы к AI-ассистенту
 - Проверяйте сгенерированный код перед использованием
 - Разбивайте сложные задачи на подзадачи
-- Используйте Conventional Commits для коммитов
+- Используйте [Conventional Commits](https://www.conventionalcommits.org/ru/v1.0.0/) для коммитов
 - Предпочитайте стандартные инструменты генерации кода вместо полной генерации через ИИ
 - Для скриптовых задач запрашивайте у ИИ скрипты, а не готовые результаты
 - Используйте современные форматы данных: JSON для данных, MD для текстов, YML для конфигов
@@ -446,4 +454,28 @@ N8N – это инструмент для автоматизации рабоч
 - Проверьте наличие конфликтующих плагинов
 - Обновите Cursor до последней версии
 - Используйте инструменты отката (Restore checkpoint, Cancel, Reapply)
-- Обратитесь к документации или сообществу Cursor 
+- Обратитесь к [документации Cursor](https://cursor.sh/docs) или [сообществу Cursor](https://discord.com/invite/cursor)
+
+## 11. Полезные ссылки
+
+### Документация основных инструментов
+- [Cursor Documentation](https://cursor.sh/docs) - официальная документация Cursor IDE
+- [Git Documentation](https://git-scm.com/doc) - документация по Git
+- [VSCode Documentation](https://code.visualstudio.com/docs) - документация VSCode (Cursor основан на VSCode)
+- [Markdown Guide](https://www.markdownguide.org/) - руководство по Markdown
+
+### Документация по языкам программирования
+- [JavaScript MDN](https://developer.mozilla.org/ru/docs/Web/JavaScript) - документация по JavaScript
+- [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/intro.html) - руководство по TypeScript
+- [Python Documentation](https://docs.python.org/3/) - документация Python
+- [Java Documentation](https://docs.oracle.com/en/java/) - документация Java
+- [Dart Documentation](https://dart.dev/guides) - документация Dart
+
+### Документация по фреймворкам
+- [React Documentation](https://reactjs.org/docs/getting-started.html) - документация React
+- [Flutter Documentation](https://docs.flutter.dev/) - документация Flutter
+- [Node.js Documentation](https://nodejs.org/en/docs/) - документация Node.js
+- [Spring Boot Documentation](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/) - документация Spring Boot
+- [JHipster Documentation](https://www.jhipster.tech/documentation-archive/) - документация JHipster
+- [Strapi Documentation](https://docs.strapi.io/) - документация Strapi
+- [N8N Documentation](https://docs.n8n.io/) - документация N8N 
