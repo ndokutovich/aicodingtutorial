@@ -73,6 +73,16 @@ void main() {
 
 ## Типы тестов во Flutter
 
+| Тип теста | Описание | Инструменты | Применение | Особенности |
+|-----------|----------|-------------|------------|-------------|
+| Unit тесты | Тестирование отдельных классов и функций | `test`, `mockito` | Бизнес-логика, сервисы, утилиты | - Изолированное тестирование<br>- Быстрое выполнение<br>- Легкое поддержание |
+| Widget тесты | Тестирование отдельных виджетов | `flutter_test`, `WidgetTester` | UI компоненты, формы, анимации | - Тестирование рендеринга<br>- Симуляция взаимодействия<br>- Проверка состояний |
+| Integration тесты | Тестирование взаимодействия компонентов | `integration_test` | Полные экраны, навигация, бизнес-процессы | - End-to-end тестирование<br>- Реальное окружение<br>- Проверка интеграции |
+| Golden тесты | Тестирование визуального соответствия | `golden_toolkit` | UI дизайн, верстка, темизация | - Пиксельное сравнение<br>- Разные размеры экрана<br>- Разные платформы |
+| Performance тесты | Тестирование производительности | `flutter_driver` | Скорость работы, память, CPU | - Метрики производительности<br>- Профилирование<br>- Оптимизация |
+
+### Примеры реализации
+
 ### 1. Unit тесты
 ```dart
 void main() {
@@ -214,6 +224,54 @@ void main() {
       // Assert - Check navigation to home
       expect(find.byType(HomeScreen), findsOneWidget);
       expect(find.byType(LoginScreen), findsNothing);
+    });
+  });
+}
+```
+
+### 4. Golden тесты
+```dart
+void main() {
+  group('CircleProgressPainter', () {
+    testWidgets('should match design', (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: CustomPaint(
+            painter: CircleProgressPainter(
+              progress: 0.75,
+              color: Colors.blue,
+            ),
+            size: Size(100, 100),
+          ),
+        ),
+      );
+
+      await expectLater(
+        find.byType(CustomPaint),
+        matchesGoldenFile('circle_progress_75.png'),
+      );
+    });
+  });
+}
+```
+
+### 5. Performance тесты
+```dart
+void main() {
+  group('Performance tests', () {
+    final binding = IntegrationTestWidgetsFlutterBinding.ensureInitialized();
+
+    testWidgets('measure scroll performance', (tester) async {
+      await tester.pumpWidget(MyApp());
+      
+      await binding.traceAction(() async {
+        await tester.fling(
+          find.byType(ListView),
+          Offset(0, -500),
+          10000,
+        );
+        await tester.pumpAndSettle();
+      }, reportKey: 'scroll_performance');
     });
   });
 }
