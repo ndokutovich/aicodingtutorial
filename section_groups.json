@@ -1,0 +1,62 @@
+{
+  "version_info": {
+    "header": "# Версия и применимость\n\nИнформация о текущей версии Cursor IDE и области применения руководства.\n\n",
+    "sections": [20]
+  },
+  "quick_start": {
+    "header": "# Быстрый старт\n\nОсновная информация для быстрого начала работы с Cursor IDE.\n\n",
+    "sections": [1, 2, 4]
+  },
+  "advanced_tips": {
+    "header": "# Продвинутые советы\n\nПродвинутые техники и рекомендации по работе с Cursor IDE.\n\n",
+    "sections": [6, 10, 16]
+  },
+  "cursor_rules": {
+    "header": "# Настройка Cursor Rules\n\nПодробное руководство по настройке и использованию Cursor Rules.\n\n",
+    "sections": [13]
+  },
+  "environment_general": {
+    "header": "# Общая настройка окружения\n\nБазовая настройка окружения для работы с Cursor IDE.\n\n",
+    "sections": [3, 5]
+  },
+  "environment_frontend": {
+    "header": "# Настройка окружения для Frontend (Flutter)\n\nНастройка окружения для разработки на Flutter.\n\n",
+    "sections": [15]
+  },
+  "environment_backend": {
+    "header": "# Настройка окружения для Backend (Java и JHipster)\n\nНастройка окружения для Java-разработки с использованием JHipster.\n\n",
+    "sections": [14]
+  },
+  "environment_other": {
+    "header": "# Настройка окружения для других технологий\n\nНастройка окружения для Node.js, React и других технологий.\n\n",
+    "sections": [15]
+  },
+  "subscription_types": {
+    "header": "# Типы подписок\n\nОписание различных типов подписок и их возможностей.\n\n",
+    "sections": [18]
+  },
+  "licensing": {
+    "header": "# Лицензирование\n\nИнформация о лицензировании и правовых аспектах использования Cursor IDE.\n\n",
+    "sections": [19]
+  },
+  "data_handling": {
+    "header": "# Работа с данными\n\nРуководство по работе с данными в Cursor IDE, включая безопасность и конфиденциальность.\n\n",
+    "sections": [12]
+  },
+  "additional_hotkeys": {
+    "header": "# Горячие клавиши\n\nПолный список горячих клавиш и их использование.\n\n",
+    "sections": [7]
+  },
+  "additional_docs": {
+    "header": "# Документация\n\nСсылки на полезную документацию и ресурсы.\n\n",
+    "sections": [9, 17]
+  },
+  "additional_integrations": {
+    "header": "# Интеграции\n\nРуководство по интеграции с внешними инструментами и сервисами.\n\n",
+    "sections": [11]
+  },
+  "additional_examples": {
+    "header": "# Примеры Cursor Rules\n\nПрактические примеры использования Cursor Rules.\n\n",
+    "sections": [8]
+  }
+} 
