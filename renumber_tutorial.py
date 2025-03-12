@@ -26,8 +26,19 @@ def slugify(text):
         
     return ascii_text
 
+def clean_existing_anchors(content):
+    """Remove any existing HTML anchors from the content."""
+    # Pattern to match anchor tags
+    anchor_pattern = r'<a\s+id="section-\d+(?:-\d+)*">\s*</a>\n'
+    # Replace anchors with empty string
+    cleaned_content = re.sub(anchor_pattern, '', content)
+    return cleaned_content
+
 def parse_document(content):
     """Parse the document and identify all sections and subsections up to 4 levels deep."""
+    # First clean any existing anchors to prevent duplication
+    content = clean_existing_anchors(content)
+    
     # Split content into lines
     lines = content.split('\n')
     
@@ -67,6 +78,10 @@ def parse_document(content):
                 toc_lines.append(line)
                 continue
         
+        # Skip lines that might be leftover anchor tags
+        if re.match(r'<a\s+id="section-\d+(?:-\d+)*"></a>', line):
+            continue
+            
         # Process main section headers (level 1-2)
         section_match = re.match(r'^(#{1,2})\s+(\d+)\.(\s+.+)$', line)
         if section_match:
