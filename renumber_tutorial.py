@@ -1,6 +1,30 @@
 import os
 import re
 import argparse
+import unicodedata
+
+def slugify(text):
+    """Convert text to a format suitable for use in URLs and anchors."""
+    # Normalize unicode characters
+    text = unicodedata.normalize('NFKD', text)
+    # Convert to ASCII, ignore non-ASCII characters
+    ascii_text = ''.join(c for c in text if not unicodedata.combining(c) and ord(c) < 128)
+    # Convert to lowercase
+    ascii_text = ascii_text.lower()
+    # Replace spaces with hyphens
+    ascii_text = ascii_text.replace(' ', '-')
+    # Remove non-alphanumeric characters
+    ascii_text = re.sub(r'[^a-z0-9\-]', '', ascii_text)
+    # Replace multiple hyphens with a single hyphen
+    ascii_text = re.sub(r'-+', '-', ascii_text)
+    # Remove leading and trailing hyphens
+    ascii_text = ascii_text.strip('-')
+    
+    # If we have only numbers after processing, add a prefix
+    if re.match(r'^\d+$', ascii_text):
+        ascii_text = f"section-{ascii_text}"
+        
+    return ascii_text
 
 def parse_document(content):
     """Parse the document and identify all sections and subsections up to 4 levels deep."""
@@ -164,19 +188,34 @@ def generate_toc(sections):
     toc = ["# Содержание\n"]
     
     for i, section in enumerate(sections, 1):
+        # Generate a proper heading ID
+        section_text = f"{i}. {section['title']}"
+        section_slug = slugify(section_text)
+        
+        # For sections, we'll use a simple, reliable format
+        section_id = f"section-{i}"
+        
         # Add section to TOC
         indent = "  " * (section['level'] - 1)
-        toc.append(f"{indent}- [{i}. {section['title']}](#section-{i})")
+        toc.append(f"{indent}- [{section_text}](#{section_id})")
         
         # Add subsections to TOC if present
         for j, subsection in enumerate(section['subsections'], 1):
+            # Generate a proper heading ID for subsection
+            subsection_text = f"{i}.{j} {subsection['title']}"
+            subsection_id = f"section-{i}-{j}"
+            
             sub_indent = "  " * subsection['level']
-            toc.append(f"{sub_indent}- [{i}.{j} {subsection['title']}](#section-{i}-{j})")
+            toc.append(f"{sub_indent}- [{subsection_text}](#{subsection_id})")
             
             # Add sub-subsections to TOC if present
             for k, subsubsection in enumerate(subsection.get('subsubsections', []), 1):
+                # Generate a proper heading ID for sub-subsection
+                subsubsection_text = f"{i}.{j}.{k} {subsubsection['title']}"
+                subsubsection_id = f"section-{i}-{j}-{k}"
+                
                 subsub_indent = "  " * subsubsection['level']
-                toc.append(f"{subsub_indent}- [{i}.{j}.{k} {subsubsection['title']}](#section-{i}-{j}-{k})")
+                toc.append(f"{subsub_indent}- [{subsubsection_text}](#{subsubsection_id})")
     
     return toc
 
@@ -211,29 +250,37 @@ def renumber_document(doc_info):
                     if subsubsection['index'] > toc_end:
                         subsubsection['index'] += toc_diff
     
-    # Renumber sections and subsections
+    # Renumber sections and subsections and add HTML anchors
     for i, section in enumerate(sections, 1):
         old_index = section['index']
-        lines[old_index] = re.sub(r'^(#{1,2})\s+\d+\.', f"\\1 {i}.", lines[old_index])
+        # Add HTML anchor before the section header
+        section_id = f"section-{i}"
+        lines[old_index] = f'<a id="{section_id}"></a>\n' + re.sub(r'^(#{1,2})\s+\d+\.', f"\\1 {i}.", lines[old_index])
         
         # Renumber subsections
         for j, subsection in enumerate(section['subsections'], 1):
             sub_index = subsection['index']
+            # Add HTML anchor
+            subsection_id = f"section-{i}-{j}"
+            
             # Handle both patterns (with and without trailing dot)
             if '.' in lines[sub_index].split()[1] and lines[sub_index].split()[1].endswith('.'):
-                lines[sub_index] = re.sub(r'^(#{3})\s+\d+\.\d+\.', f"\\1 {i}.{j}.", lines[sub_index])
+                lines[sub_index] = f'<a id="{subsection_id}"></a>\n' + re.sub(r'^(#{3})\s+\d+\.\d+\.', f"\\1 {i}.{j}.", lines[sub_index])
             else:
-                lines[sub_index] = re.sub(r'^(#{3})\s+\d+\.\d+', f"\\1 {i}.{j}", lines[sub_index])
+                lines[sub_index] = f'<a id="{subsection_id}"></a>\n' + re.sub(r'^(#{3})\s+\d+\.\d+', f"\\1 {i}.{j}", lines[sub_index])
             
             # Renumber sub-subsections
             for k, subsubsection in enumerate(subsection.get('subsubsections', []), 1):
                 subsub_index = subsubsection['index']
+                # Add HTML anchor
+                subsubsection_id = f"section-{i}-{j}-{k}"
+                
                 # Handle both patterns (with and without trailing dot)
                 if '.' in lines[subsub_index].split()[1] and lines[subsub_index].split()[1].endswith('.'):
-                    lines[subsub_index] = re.sub(r'^(#{4})\s+\d+\.\d+\.\d+\.', 
+                    lines[subsub_index] = f'<a id="{subsubsection_id}"></a>\n' + re.sub(r'^(#{4})\s+\d+\.\d+\.\d+\.', 
                                                f"\\1 {i}.{j}.{k}.", lines[subsub_index])
                 else:
-                    lines[subsub_index] = re.sub(r'^(#{4})\s+\d+\.\d+\.\d+', 
+                    lines[subsub_index] = f'<a id="{subsubsection_id}"></a>\n' + re.sub(r'^(#{4})\s+\d+\.\d+\.\d+', 
                                                f"\\1 {i}.{j}.{k}", lines[subsub_index])
     
     return '\n'.join(lines)
